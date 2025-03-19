@@ -23,14 +23,35 @@ const { description, title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
+    <script>
+      (() => {
+        const isDarkMode = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        document.documentElement.classList.toggle("dark", isDarkMode);
+      })();
+    </script>
   </head>
 
   <body class="relative text-black dark:text-white">
-    <div
-      class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
-    bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
-    >
+    <!-- Fondos Renderizados Condicionalmente -->
+    <div>
+      <!-- Fondo para Dark Mode -->
+      <div
+        class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
+      dark:block hidden bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+      >
+      </div>
+
+      <!-- Fondo para Light Mode -->
+      <div
+        class="absolute inset-0 -z-10 h-full w-full bg-white
+      bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)]
+      bg-[size:6rem_4rem] dark:hidden"
+      >
+      </div>
     </div>
+
     <Header />
     <slot />
     <Footer />
