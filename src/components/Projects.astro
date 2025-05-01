@@ -3,10 +3,13 @@ import GitHub from "./icons/GitHub.astro";
 import JWT from "./icons/JWT.astro";
 import NextJS from "./icons/NextJS.astro";
 import Tailwind from "./icons/Tailwind.astro";
+import TypeScript from "./icons/Typescript.astro";
+import SqlServer from "./icons/SqlServer.astro";
+import Documentation from "./icons/Documentation.astro";
 import Link from "./icons/Link.astro";
-import Swagger from "./icons/Swagger.astro";
+import React from "./icons/React.astro";
 import LinkButton from "./LinkButton.astro";
-import CSharp from "./icons/CSharp.astro";
+import ASPNET from "./icons/ASPNET.astro";
 
 const TAGS = {
   NEXT: {
@@ -19,18 +22,43 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: Tailwind,
   },
-  CSharp: {
-    name: "C#",
-    class: "bg-gray-800 dark:bg-gray-700 text-white",
-    icon: CSharp,
+  ASPNET: {
+    name: "ASP.NET",
+    class: "bg-black text-white",
+    icon: ASPNET,
   },
   JWT: {
     name: "JWT",
     class: "bg-black text-white",
     icon: JWT,
   },
+  React: {
+    name: "React",
+    class: "bg-black text-white",
+    icon: React,
+  },
+  TypeScript: {
+    name: "TypeScript",
+    class: "bg-black text-white",
+    icon: TypeScript,
+  },
+  SqlServer: {
+    name: "SQL Server",
+    class: "bg-black text-white",
+    icon: SqlServer,
+  },
 };
 const PROJECTS = [
+  {
+    title: "Demo LinkedIn - Aplicación backend",
+    description:
+      "Este es un proyecto de backend desarrollado en ASP.NET Core que simula una aplicación similar a LinkedIn. Permite a los usuarios registrarse, iniciar sesión y gestionar su perfil profesional. Aunque se trata de un backend, también se está desarrollando una versión frontend con React.js y TypeScript.",
+    link: "",
+    api: "https://github.com/JohanBarrera71/demo-linkedin-fullstack/blob/master/README.md",
+    github: "https://github.com/JohanBarrera71/demo-linkedin-fullstack",
+    image: "projects/demo-linkedin.png",
+    tags: [TAGS.ASPNET, TAGS.JWT, TAGS.React, TAGS.TypeScript, TAGS.SqlServer],
+  },
   {
     title: "Demo Login - Autenticación y autorización de usuarios.",
     description:
@@ -41,7 +69,7 @@ const PROJECTS = [
     api: "",
     github: "https://github.com/JohanBarrera71/DemoLogin",
     image: "projects/demo-login.png",
-    tags: [TAGS.CSharp, TAGS.JWT],
+    tags: [TAGS.ASPNET, TAGS.JWT],
   },
 ];
 ---
@@ -66,11 +94,11 @@ const PROJECTS = [
             {title}
           </h3>
           <div class="flex flex-wrap mt-2">
-            <ul class="flex flex-row mb-2 gap-x-2">
+            <ul class="flex flex-wrap flex-row mb-2 gap-x-2">
               {tags.map((tag) => (
                 <li>
                   <span
-                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                    class={`flex gap-x-2 mb-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
                   >
                     <tag.icon class="size-4" />
                     {tag.name}
@@ -97,7 +125,7 @@ const PROJECTS = [
               )}
               {api && (
                 <LinkButton href={api}>
-                  <Swagger class="size-4" />
+                  <Documentation />
                   API Doc
                 </LinkButton>
               )}
